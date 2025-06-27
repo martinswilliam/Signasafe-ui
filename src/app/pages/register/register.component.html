@@ -1,1 +1,26 @@
-<p>register works!</p>
+<div class="register-container">
+  <mat-card>
+    <mat-card-title>Criar Conta</mat-card-title>
+    <mat-card-content>
+      <form class="register-form">
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="seuemail@exemplo.com" type="email" />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Senha</mat-label>
+          <input matInput placeholder="Crie uma senha" type="password" />
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" class="register-button">
+        Registrar
+      </button>
+    </mat-card-actions>
+    <mat-card-footer>
+      <p>Já tem uma conta? <a routerLink="/login">Faça o login</a></p>
+    </mat-card-footer>
+  </mat-card>
+</div>

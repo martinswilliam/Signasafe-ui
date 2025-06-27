@@ -1,1 +1,26 @@
-<p>login works!</p>
+<div class="login-container">
+  <mat-card>
+    <mat-card-title>Login</mat-card-title>
+    <mat-card-content>
+      <form class="login-form">
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="seuemail@exemplo.com" type="email" />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Senha</mat-label>
+          <input matInput placeholder="Sua senha" type="password" />
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" class="login-button">
+        Entrar
+      </button>
+    </mat-card-actions>
+    <mat-card-footer>
+      <p>Não tem uma conta? <a routerLink="/register">Registre-se</a></p>
+    </mat-card-footer>
+  </mat-card>
+</div>

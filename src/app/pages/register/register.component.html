@@ -2,23 +2,42 @@
   <mat-card>
     <mat-card-title>Criar Conta</mat-card-title>
     <mat-card-content>
-      <form class="register-form">
+      <form
+        class="register-form"
+        [formGroup]="registerForm"
+        (ngSubmit)="onSubmit()"
+      >
         <mat-form-field appearance="fill">
           <mat-label>Email</mat-label>
-          <input matInput placeholder="seuemail@exemplo.com" type="email" />
+          <input
+            matInput
+            placeholder="seuemail@exemplo.com"
+            type="email"
+            formControlName="email"
+          />
         </mat-form-field>
 
         <mat-form-field appearance="fill">
           <mat-label>Senha</mat-label>
-          <input matInput placeholder="Crie uma senha" type="password" />
+          <input
+            matInput
+            placeholder="Crie uma senha"
+            type="password"
+            formControlName="password"
+          />
         </mat-form-field>
+
+        <button
+          mat-raised-button
+          color="primary"
+          class="register-button"
+          type="submit"
+          [disabled]="!registerForm.valid"
+        >
+          Registrar
+        </button>
       </form>
     </mat-card-content>
-    <mat-card-actions>
-      <button mat-raised-button color="primary" class="register-button">
-        Registrar
-      </button>
-    </mat-card-actions>
     <mat-card-footer>
       <p>Já tem uma conta? <a routerLink="/login">Faça o login</a></p>
     </mat-card-footer>

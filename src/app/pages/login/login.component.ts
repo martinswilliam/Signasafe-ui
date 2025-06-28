@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 // Importa nosso serviço
 import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router'; // Importe o Router
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent {
   loginForm: FormGroup;
 
   // Injeta o AuthService no construtor
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private router: Router) {
     this.loginForm = new FormGroup({
       'email': new FormControl(null, [Validators.required, Validators.email]),
       'password': new FormControl(null, Validators.required)
@@ -22,18 +23,19 @@ export class LoginComponent {
 
   onSubmit() {
     if (this.loginForm.valid) {
-      // Em vez de console.log, agora chamamos o serviço
       this.authService.login(this.loginForm.value).subscribe({
-        // 'subscribe' é como dizemos: "execute a chamada e me avise quando a resposta chegar"
         next: (response) => {
-          // Código a ser executado em caso de sucesso
           console.log('Login bem-sucedido!', response);
-          // TODO: Salvar o token e redirecionar o usuário
+
+          // 1. Salva o token usando nosso serviço
+          this.authService.saveToken(response.token);
+
+          // 2. Redireciona o usuário para a página de dashboard
+          this.router.navigate(['/dashboard']);
         },
         error: (err) => {
-          // Código a ser executado em caso de erro
           console.error('Erro no login!', err);
-          // TODO: Mostrar uma mensagem de erro para o usuário
+          // TODO: Mostrar uma mensagem de erro visual para o usuário
         }
       });
     }

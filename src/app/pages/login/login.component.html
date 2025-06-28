@@ -2,20 +2,38 @@
   <mat-card>
     <mat-card-title>Login</mat-card-title>
     <mat-card-content>
-      <form class="login-form">
+      <form class="login-form" [formGroup]="loginForm">
         <mat-form-field appearance="fill">
           <mat-label>Email</mat-label>
-          <input matInput placeholder="seuemail@exemplo.com" type="email" />
+
+          <input
+            matInput
+            placeholder="seuemail@exemplo.com"
+            type="email"
+            formControlName="email"
+          />
         </mat-form-field>
 
         <mat-form-field appearance="fill">
           <mat-label>Senha</mat-label>
-          <input matInput placeholder="Sua senha" type="password" />
+
+          <input
+            matInput
+            placeholder="Sua senha"
+            type="password"
+            formControlName="password"
+          />
         </mat-form-field>
       </form>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="primary" class="login-button">
+      <button
+        mat-raised-button
+        color="primary"
+        class="login-button"
+        type="submit"
+        [disabled]="!loginForm.valid"
+      >
         Entrar
       </button>
     </mat-card-actions>

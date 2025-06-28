@@ -7,16 +7,35 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
 
-  // A URL base da nossa API backend.
-  // No futuro, isso deve vir de um arquivo de environment.
   private apiUrl = 'http://localhost:8080/auth';
 
-  // Injetamos o HttpClient no construtor para que possamos usá-lo
+  // <<< ESSA LINHA ESTÁ FALTANDO NO SEU ARQUIVO
+  private tokenKey = 'signasafe_auth_token'; 
+
   constructor(private http: HttpClient) { }
 
-  // Método para registrar um usuário
   register(userData: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/register`, userData);
+  }
+
+  // Salva o token no localStorage
+  saveToken(token: string): void {
+    localStorage.setItem(this.tokenKey, token);
+  }
+
+  // Recupera o token do localStorage
+  getToken(): string | null {
+    return localStorage.getItem(this.tokenKey);
+  }
+
+  // Remove o token para fazer logout
+  logout(): void {
+    localStorage.removeItem(this.tokenKey);
+  }
+
+  // Verifica se o usuário está logado (se existe um token)
+  isLoggedIn(): boolean {
+    return !!this.getToken();
   }
 
   // Método para logar um usuário

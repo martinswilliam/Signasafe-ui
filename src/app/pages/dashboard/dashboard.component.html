@@ -1,12 +1,85 @@
 <div class="dashboard-container">
-  <h2>Bem-vindo, {{ userEmail }}!</h2>
+  <div class="header">
+    <h2>Bem-vindo, {{ userEmail }}!</h2>
+    <button mat-stroked-button color="warn" (click)="logout()">
+      Sair (Logout)
+    </button>
+  </div>
+  <p>Esta é a sua área segura. Gerencie e assine seus documentos abaixo.</p>
 
-  <p>
-    Esta é a sua área segura. Em breve você poderá gerenciar seus documentos
-    aqui.
-  </p>
+  <mat-divider></mat-divider>
 
-  <button mat-stroked-button color="warn" (click)="logout()">
-    Sair (Logout)
-  </button>
+  <mat-card class="dashboard-card">
+    <mat-card-header>
+      <mat-card-title>Novo Documento</mat-card-title>
+      <mat-card-subtitle>Selecione um documento para enviar</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content class="upload-section">
+      <input type="file" hidden #fileInput (change)="onFileSelected($event)" />
+      <button mat-stroked-button color="primary" (click)="fileInput.click()">
+        Selecionar Arquivo
+      </button>
+
+      <span *ngIf="selectedFile" class="file-name">
+        {{ selectedFile.name }}
+      </span>
+
+      <button
+        mat-raised-button
+        color="accent"
+        (click)="onUpload()"
+        [disabled]="!selectedFile"
+        class="upload-button"
+      >
+        Enviar Documento
+      </button>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="dashboard-card">
+    <mat-card-header>
+      <mat-card-title>Meus Documentos</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div *ngIf="documents.length === 0" class="no-documents">
+        <p>Você ainda não enviou nenhum documento.</p>
+      </div>
+
+      <table
+        mat-table
+        [dataSource]="documents"
+        class="mat-elevation-z8"
+        *ngIf="documents.length > 0"
+      >
+        <ng-container matColumnDef="fileName">
+          <th mat-header-cell *matHeaderCellDef>Nome do Arquivo</th>
+          <td mat-cell *matCellDef="let doc">{{ doc.fileName }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="uploadDate">
+          <th mat-header-cell *matHeaderCellDef>Data de Upload</th>
+          <td mat-cell *matCellDef="let doc">
+            {{ doc.uploadDate | date : "dd/MM/yyyy HH:mm" }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef>Ações</th>
+          <td mat-cell *matCellDef="let doc">
+            <button
+              mat-icon-button
+              color="primary"
+              title="Assinar Documento"
+              (click)="signDocument(doc.id)"
+            >
+              <mat-icon>edit</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </mat-card-content>
+  </mat-card>
 </div>

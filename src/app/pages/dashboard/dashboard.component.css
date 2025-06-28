@@ -1,4 +1,29 @@
 .dashboard-container {
-  padding: 40px;
+  padding: 20px 40px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.dashboard-card {
+  margin-top: 20px;
+}
+
+.upload-section {
+  display: flex;
+  align-items: center;
+  gap: 16px; /* Adiciona um espaço entre os elementos */
+  padding: 16px 0;
+}
+
+.no-documents {
+  padding: 20px;
   text-align: center;
+  color: #777;
 }

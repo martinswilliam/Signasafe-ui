@@ -14,10 +14,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatTableModule } from '@angular/material/table';   
+import { MatIconModule } from '@angular/material/icon';  
 
 // Importações de Formulários e HTTP
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // <-- VERIFIQUE ESTA LINHA
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
 
 @NgModule({
   declarations: [
@@ -30,17 +33,20 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // <-- VERIFI
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule, // Já tínhamos adicionado para as chamadas de API
+    HttpClientModule, // adicionado para as chamadas de API
 
     // Módulos do Angular Material
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatDividerModule,
+    MatTableModule,   // <-- ADICIONE/VERIFIQUE ESTA LINHA
+    MatIconModule ,
 
     // MÓDULOS DE FORMULÁRIO
-    FormsModule,          // <-- ADICIONE ESTA LINHA
-    ReactiveFormsModule   // <-- E ESTA LINHA (A MAIS IMPORTANTE)
+    FormsModule,          
+    ReactiveFormsModule   
   ],
   providers: [AuthGuard], // AuthGuard precisa estar nos providers se for uma classe
   bootstrap: [AppComponent]

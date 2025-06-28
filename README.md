@@ -1,27 +1,69 @@
-# SignasafeUi
+# SignaSafe UI - Interface de Assinatura Digital
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.7.
+![Angular](https://img.shields.io/badge/Angular-16.x-DD0031?style=for-the-badge&logo=angular)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?style=for-the-badge&logo=typescript)
+![Angular Material](https://img.shields.io/badge/Angular%20Material-16.x-F8BBD0?style=for-the-badge&logo=angular)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/URL_DO_SEU_BADGE/deploy-status)](https://app.netlify.com/sites/SEU_SITE/deploys)
 
-## Development server
+## 📝 Descrição
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+**SignaSafe UI** é a aplicação de frontend (cliente) para a [API SignaSafe](https://github.com/martinswilliam/Signasafe-api). Desenvolvida com Angular, esta interface de usuário permite que os usuários se registrem, autentiquem, façam upload e assinem documentos digitais de forma segura.
 
-## Code scaffolding
+O projeto foi construído com foco em boas práticas de arquitetura de frontend, como a separação de responsabilidades em componentes e serviços, formulários reativos e proteção de rotas.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## ✨ Prévia da Aplicação
 
-## Build
+![Prévia da Aplicação](URL_DA_SUA_IMAGEM.png)
+_(Instruções de como adicionar sua imagem ao final)_
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## ✨ Funcionalidades
 
-## Running unit tests
+- **Autenticação de Usuários:** Telas de Login e Registro com validação de formulário.
+- **Gerenciamento de Sessão:** Uso de Tokens JWT para manter o usuário logado e persistência de dados no `localStorage`.
+- **Rotas Protegidas:** Uso de `AuthGuard` para garantir que apenas usuários autenticados acessem a área principal (Dashboard).
+- **Dashboard Interativo:** Exibe uma mensagem de boas-vindas personalizada e lista os documentos do usuário.
+- **Upload de Documentos:** Interface para selecionar e enviar arquivos para a API backend.
+- **Assinatura de Documentos:** Funcionalidade para solicitar a assinatura digital de um documento listado.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## 🛠️ Tecnologias Utilizadas
 
-## Running end-to-end tests
+- **Angular 16** e **TypeScript**
+- **Angular Material**: Para a construção de uma UI moderna e responsiva.
+- **Angular Router**: Para navegação entre as páginas (SPA - Single Page Application).
+- **Angular Reactive Forms**: Para gerenciamento robusto de formulários.
+- **RxJS**: Para lidar com programação reativa e chamadas assíncronas.
+- **NPM**: Gerenciador de pacotes e dependências.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## 🚀 Como Executar o Projeto Localmente
 
-## Further help
+### Pré-requisitos
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- [Node.js e NPM](https://nodejs.org/) (versão LTS recomendada)
+- [Angular CLI](https://angular.io/cli) (`npm install -g @angular/cli`)
+- A **API backend (SignaSafe API)** deve estar rodando localmente.
+
+### Passos
+
+1.  **Clone o repositório:**
+
+    ```bash
+    git clone [https://github.com/martinswilliam/Signasafe-ui.git](https://github.com/martinswilliam/Signasafe-ui.git)
+    cd Signasafe-ui
+    ```
+
+2.  **Instale as dependências:**
+    Este comando lê o `package.json` e baixa todas as bibliotecas necessárias para o projeto.
+
+    ```bash
+    npm install
+    ```
+
+3.  **Execute o servidor de desenvolvimento:**
+    ```bash
+    ng serve -o
+    ```
+    O `-o` abre seu navegador automaticamente em `http://localhost:4200/`. A aplicação irá recarregar automaticamente se você fizer qualquer alteração nos arquivos.
+
+## 🔗 Conectando ao Backend
+
+Esta aplicação foi projetada para se comunicar com a [API SignaSafe](https://github.com/martinswilliam/Signasafe-api). A URL base da API está configurada nos arquivos de serviço dentro de `src/app/services/`. Por padrão, ela aponta para `http://localhost:8080`.

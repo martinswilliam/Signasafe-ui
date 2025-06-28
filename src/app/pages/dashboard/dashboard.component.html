@@ -1,3 +1,12 @@
-<p>Seja bem-vindo, usuário autenticado!</p>
+<div class="dashboard-container">
+  <h2>Bem-vindo, {{ userEmail }}!</h2>
 
-<button (click)="logout()">Sair (Logout)</button>
+  <p>
+    Esta é a sua área segura. Em breve você poderá gerenciar seus documentos
+    aqui.
+  </p>
+
+  <button mat-stroked-button color="warn" (click)="logout()">
+    Sair (Logout)
+  </button>
+</div>

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { jwtDecode } from 'jwt-decode'; // Importa a nova biblioteca
 
 @Injectable({
   providedIn: 'root'
@@ -41,5 +42,17 @@ export class AuthService {
   // Método para logar um usuário
   login(credentials: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/login`, credentials);
+  }
+  
+  getDecodedToken(): any {
+    const token = this.getToken();
+    if (token) {
+      try {
+        return jwtDecode(token);
+      } catch(Error) {
+        return null;
+      }
+    }
+    return null;
   }
 }

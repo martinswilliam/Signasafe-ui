@@ -7,6 +7,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { AuthGuard } from './guards/auth.guard';
 
 // Importações do Angular Material
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -14,9 +15,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 
-// Importações dos formulários e do HTTP
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http'; // <<< GARANTA QUE ESTA LINHA ESTÁ AQUI
+// Importações de Formulários e HTTP
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // <-- VERIFIQUE ESTA LINHA
 
 @NgModule({
   declarations: [
@@ -29,15 +30,19 @@ import { HttpClientModule } from '@angular/common/http'; // <<< GARANTA QUE ESTA
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule, // Já tínhamos adicionado para as chamadas de API
+
+    // Módulos do Angular Material
+    MatCardModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatCardModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule // <<< E QUE ESTE MÓDULO ESTÁ AQUI NO ARRAY
+
+    // MÓDULOS DE FORMULÁRIO
+    FormsModule,          // <-- ADICIONE ESTA LINHA
+    ReactiveFormsModule   // <-- E ESTA LINHA (A MAIS IMPORTANTE)
   ],
-  providers: [],
+  providers: [AuthGuard], // AuthGuard precisa estar nos providers se for uma classe
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -20,6 +20,7 @@
   align-items: center;
   gap: 16px; /* Adiciona um espaço entre os elementos */
   padding: 16px 0;
+  margin-left: 12px;
 }
 
 .no-documents {

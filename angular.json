@@ -30,8 +30,16 @@
             ],
             "scripts": []
           },
+          
           "configurations": {
             "production": {
+                "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.development.ts",
+                  "with": "src/environments/environment.ts"
+                }
+              ],
+
               "budgets": [
                 {
                   "type": "initial",
@@ -45,7 +53,11 @@
                 }
               ],
               "outputHashing": "all"
+              
             },
+            
+
+            
             "development": {
               "buildOptimizer": false,
               "optimization": false,

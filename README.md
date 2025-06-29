@@ -3,7 +3,7 @@
 ![Angular](https://img.shields.io/badge/Angular-16.x-DD0031?style=for-the-badge&logo=angular)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?style=for-the-badge&logo=typescript)
 ![Angular Material](https://img.shields.io/badge/Angular%20Material-16.x-F8BBD0?style=for-the-badge&logo=angular)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/URL_DO_SEU_BADGE/deploy-status)](https://app.netlify.com/sites/SEU_SITE/deploys)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fmartinswilliam%2FSignasafe-ui)
 
 ## 📝 Descrição
 

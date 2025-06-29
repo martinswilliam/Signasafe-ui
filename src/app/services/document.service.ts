@@ -2,13 +2,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DocumentService {
 
-  private apiUrl = 'http://localhost:8080/documents';
+  private apiUrl = environment.apiUrl + '/documents';
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 

@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { jwtDecode } from 'jwt-decode'; // Importa a nova biblioteca
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private apiUrl = 'http://localhost:8080/auth';
+  private apiUrl = environment.apiUrl + '/auth';
 
   // <<< ESSA LINHA ESTÁ FALTANDO NO SEU ARQUIVO
   private tokenKey = 'signasafe_auth_token'; 
